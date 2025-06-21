@@ -4,6 +4,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { PopularmoviesComponent } from './components/popularmovies/popularmovies.component';
 import { MoviedetailsComponent } from './components/moviedetails/moviedetails.component';
 import { FavoritiesMoviesComponent } from './components/favorities-movies/favorities-movies.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
+import { MoviesRoutingModule } from './movies-routing.module';
 
 
 
@@ -15,7 +18,13 @@ import { FavoritiesMoviesComponent } from './components/favorities-movies/favori
     FavoritiesMoviesComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule,
+    MoviesRoutingModule,
+    SharedModule
+  ],
+  exports:[
+    HomeComponent,
   ]
 })
 export class MoviesModule { }
