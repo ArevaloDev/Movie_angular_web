@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { MoviesModule } from './movies/movies.module';
-import { SharedModule } from './shared/shared.module';
+import { SharedModule } from "./shared/shared.module";
+
 
 
 @NgModule({
@@ -18,8 +19,8 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     MoviesModule,
-
-  ],
+    SharedModule
+],
   providers: [
         provideHttpClient(
       withInterceptors([authInterceptor])
