@@ -3,20 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { SearchbarComponent } from './shared/components/searchbar/searchbar.component';
+
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { MoviesModule } from './movies/movies.module';
+import { SharedModule } from './shared/shared.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    SearchbarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MoviesModule,
+
   ],
-  providers: [],
+  providers: [
+        provideHttpClient(
+      withInterceptors([authInterceptor])
+    ),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
