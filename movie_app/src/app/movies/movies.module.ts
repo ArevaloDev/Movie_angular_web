@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { MoviesRoutingModule } from './movies-routing.module';
 import { RouterModule } from '@angular/router';
+import { MoviesListComponent } from './components/movies-list/movies-list.component';
 
 
 
@@ -14,7 +15,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     HomeComponent,
     MoviedetailsComponent,
-    FavoritiesMoviesComponent
+    FavoritiesMoviesComponent,
+    MoviesListComponent
   ],
   imports: [
     CommonModule,

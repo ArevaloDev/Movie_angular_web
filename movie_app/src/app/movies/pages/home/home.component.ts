@@ -70,8 +70,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   };
 
-  goToDetail = (id: number): void => {
-    console.log(id);
-    this.router.navigate(['/movies/movie', id]);
-  };
+  // goToDetail = (id: number): void => {
+  //   console.log(id);
+  //   this.router.navigate(['/movies/movie', id]);
+  // };
 }
