@@ -4,9 +4,10 @@
 
   <div *ngIf="favorites.length > 0; else noFavorites">
     <div class="row g-4">
-      <div *ngFor="let movie of favorites" class="col-6 col-sm-4 col-md-3 col-lg-2">
+      <div  *ngFor="let movie of favorites" class="col-6 col-sm-4 col-md-3 col-lg-2">
         <div class="card movie-card h-100 shadow-sm">
           <img
+          *ngIf="movie.poster_path; else placeholder"
             [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
             class="card-img-top movie-img"
             [alt]="movie.title"
@@ -20,7 +21,7 @@
               class="btn btn-outline-danger w-100 mt-auto"
               (click)="removeFavorite(movie.id)"
             >
-              Quitar de favoritos
+              Eliminar de favoritos
             </button>
           </div>
         </div>
@@ -33,26 +34,6 @@
   </ng-template>
 </div>
 
-
-
-
-
-
-
-
-<!-- <h2>Películas favoritas</h2>
-<div *ngIf="favorites.length > 0; else empty">
-  <div *ngFor="let movie of favorites" class="card mb-3">
-    <img [src]="'https://image.tmdb.org/t/p/w300' + movie.backdrop_path" class="card-img-top">
-    <div class="card-body">
-      <h5 class="card-title">{{ movie.title }}</h5>
-      <button class="btn btn-danger" (click)="removeFavorite(movie.id)">
-        Quitar de favoritos
-      </button>
-    </div>
-  </div>
-</div>
-
-<ng-template #empty>
-  <p>No tienes películas favoritas aún.</p>
-</ng-template> -->
+<ng-template #placeholder>
+ <app-no-image></app-no-image>
+</ng-template>

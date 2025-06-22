@@ -15,18 +15,17 @@ export class SearchbarComponent implements OnInit {
     private fb:FormBuilder,
     private movieService:MovieService,
     private router:Router
-  ){
-     this.form  = this.fb.group({
-        movie: ['']
-      })
-  }
+  ){}
   ngOnInit(): void {
-
+         this.form  = this.fb.group({
+        movie: ['', Validators.required]
+      })
   }
   searchMovie = () => {
     const value = this.form.get('movie')?.value;
     if(value.length === 0) return;
     this.movieService.searchMovies(value);
+    this.form.reset();
 
   }
 

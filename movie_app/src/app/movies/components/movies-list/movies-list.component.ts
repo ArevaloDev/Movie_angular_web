@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 export class MoviesListComponent{
   constructor(private router:Router){}
   @Input() popularMovies:Movies[] = [];
-
-
     goToDetail = (id: number): void => {
     console.log(id);
     this.router.navigate(['/movies/movie', id]);

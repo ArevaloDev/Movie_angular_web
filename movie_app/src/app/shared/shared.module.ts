@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { NoImageComponent } from './components/no-image/no-image.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 
 
@@ -13,7 +15,9 @@ import { PaginationComponent } from './components/pagination/pagination.componen
   declarations: [
       SearchbarComponent,
       ErrorMessageComponent,
-      PaginationComponent
+      PaginationComponent,
+      NoImageComponent,
+      LoadingComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +28,9 @@ import { PaginationComponent } from './components/pagination/pagination.componen
   exports:[
     SearchbarComponent,
     ErrorMessageComponent,
-    PaginationComponent
+    PaginationComponent,
+    NoImageComponent,
+    LoadingComponent
   ]
 })
 export class SharedModule { }

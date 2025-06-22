@@ -24,7 +24,7 @@ export class MoviedetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe;
+    this.subscription.unsubscribe();
   }
 
   getMovieDetails = () => {
@@ -34,7 +34,7 @@ export class MoviedetailsComponent implements OnInit, OnDestroy {
         switchMap((params) => {
           const id = Number(params.get('id'));
           if (isNaN(id)) {
-            return of();
+            return of(null);
           }
           return this.movieService.getMovieById(id).pipe(
             finalize(() => {
@@ -42,11 +42,10 @@ export class MoviedetailsComponent implements OnInit, OnDestroy {
             })
           );
         }),
-        finalize(() => (this.isLoading = false))
       )
       .subscribe({
         next: (response) => {
-          console.log(response);
+          if(!response) return;
           this.movie = response;
         },
         error: () => {
@@ -58,7 +57,7 @@ export class MoviedetailsComponent implements OnInit, OnDestroy {
 
 
   addToFavorites(): void {
-    this.movieService.addFavorties(this.movie);
+    this.movieService.addToFavorites(this.movie);
   }
 
   removeFromFavorites(): void {

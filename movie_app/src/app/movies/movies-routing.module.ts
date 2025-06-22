@@ -5,6 +5,7 @@ import { NgModule } from "@angular/core";
 import { FavoritiesMoviesComponent } from "./components/favorities-movies/favorities-movies.component";
 
 const routes:Routes = [
+{path: '', component:HomeComponent},
 {path: 'movie/:id', component:MoviedetailsComponent},
 {path: 'favoritos', component:FavoritiesMoviesComponent},
 

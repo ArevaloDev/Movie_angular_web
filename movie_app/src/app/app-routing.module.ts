@@ -4,8 +4,9 @@ import { HomeComponent } from './movies/pages/home/home.component';
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: HomeComponent,
+    path: '',
+    redirectTo: 'movies',
+    pathMatch: 'full'
   },
 
   {

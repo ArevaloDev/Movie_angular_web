@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../enviroments/environment';
 import { Movie, Movies, ResponseMovies } from '../interfaces/movies.interface';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
 
 const FAVORITES_KEY = 'favorites_movies';
 
@@ -20,6 +20,7 @@ export class MovieService {
   clearSearch(): void {
     this.searchResultSubject.next([]);
   }
+
   getPopularMovies = (page: number): Observable<ResponseMovies> => {
     return this.http.get<ResponseMovies>(
       `${this.url}/movie/popular?page=${page}`
@@ -38,7 +39,9 @@ export class MovieService {
   searchMovies = (query: string): void => {
     this.http
       .get<ResponseMovies>(`${this.url}/search/movie?query=${query}`)
-      .pipe(map((res) => res.results as Movies[]))
+      .pipe(map((res) => res.results || []),
+      catchError(() => of([]))
+    )
       .subscribe((movies) => this.searchResultSubject.next(movies));
   };
 
@@ -50,11 +53,11 @@ export class MovieService {
   private saveFavorites = (movies: Movie[]): void => {
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(movies));
   };
-  getFavorites = () => {
+  getFavorites = ():Movie[] => {
     return this.favoritesSubject.getValue();
   };
 
-  addFavorties = (movie: Movie) => {
+  addToFavorites = (movie: Movie):void => {
     const current = this.getFavorites();
     if (!current.find((m) => m.id === movie.id)) {
       const updated = [...current, movie];
@@ -65,6 +68,7 @@ export class MovieService {
 
   removeFromFavorites(movieId: number): void {
     const updated = this.getFavorites().filter((m) => m.id !== movieId);
+    this.saveFavorites(updated);
     this.favoritesSubject.next(updated);
   }
 

@@ -1,12 +1,13 @@
 <div
-  *ngIf="!isLoading; else movieList"
-  class="container py-4 out-circle-center "
+  *ngIf="!isLoading; else loadSpinner"
+  class="container py-4 out-circle-center"
 >
-  <div  class="card mb-3 shadow-lg border-0">
+  <div class="card mb-3 shadow-lg border-0">
     <div class="row g-0">
       <!-- Poster -->
       <div class="col-md-4">
         <img
+          *ngIf="movie.poster_path; else placeholder"
           [src]="'https://image.tmdb.org/t/p/w780' + movie.poster_path"
           class="img-fluid rounded-start"
           alt="Poster"
@@ -23,8 +24,10 @@
             </p>
             <p class="card-text">{{ movie.overview }}</p>
             <p class="card-text">Generos:</p>
-            <ul *ngFor="let genre of movie.genres" class="list-group list-group-flush">
-              <li class="list-group-item">{{genre.name}}</li>
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let genre of movie.genres" class="list-group-item">
+                {{ genre.name }}
+              </li>
             </ul>
           </div>
 
@@ -32,10 +35,12 @@
             <span class="badge bg-warning text-dark fs-6">
               ⭐{{ movie.vote_average }}
             </span>
-            <button class="btn btn-danger">
-              <i class="bi bi-heart-fill me-2" (click)="isFavorite() ?  removeFromFavorites() : addToFavorites()">
-                {{ isFavorite() ? 'Quitar de favoritos' : 'Agregar a favoritos' }}
-              </i>
+            <button
+              (click)="isFavorite() ? removeFromFavorites() : addToFavorites()"
+              class="btn btn-danger"
+            >
+              <i class="bi bi-heart-fill me-2"></i>
+              {{ isFavorite() ? "Quitar de favoritos" : "Agregar a favoritos" }}
             </button>
           </div>
         </div>
@@ -44,12 +49,11 @@
   </div>
 </div>
 
-<ng-template #movieList>
-  <div class="text-center my-5">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Cargando...</span>
-    </div>
-  </div>
+<ng-template #loadSpinner>
+  <app-loading></app-loading>
 </ng-template>
 
+<ng-template #placeholder>
+  <app-no-image></app-no-image>
+</ng-template>
 <app-error-message [errorMessage]="errorMessage"></app-error-message>
