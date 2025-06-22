@@ -8,6 +8,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { NoImageComponent } from './components/no-image/no-image.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 
@@ -17,7 +18,8 @@ import { LoadingComponent } from './components/loading/loading.component';
       ErrorMessageComponent,
       PaginationComponent,
       NoImageComponent,
-      LoadingComponent
+      LoadingComponent,
+      PageNotFoundComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     ErrorMessageComponent,
     PaginationComponent,
     NoImageComponent,
-    LoadingComponent
+    LoadingComponent,
+    PageNotFoundComponent
   ]
 })
 export class SharedModule { }
