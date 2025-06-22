@@ -5,13 +5,15 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { RouterModule } from '@angular/router';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 
 @NgModule({
   declarations: [
       SearchbarComponent,
-      ErrorMessageComponent
+      ErrorMessageComponent,
+      PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
   ],
   exports:[
     SearchbarComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule { }

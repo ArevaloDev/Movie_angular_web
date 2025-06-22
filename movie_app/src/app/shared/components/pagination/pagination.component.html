@@ -1,0 +1,17 @@
+<nav class="mt-4 d-flex justify-content-center">
+  <ul class="pagination">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <button class="page-link" (click)="prev.emit()">Anterior</button>
+    </li>
+
+    <li class="page-item disabled">
+      <span class="page-link">
+        Página {{ currentPage }} de {{ totalPages }}
+      </span>
+    </li>
+
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <button class="page-link" (click)="next.emit()">Siguiente</button>
+    </li>
+  </ul>
+</nav>

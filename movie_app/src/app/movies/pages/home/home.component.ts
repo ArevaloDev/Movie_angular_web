@@ -69,9 +69,4 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.loadMovies(this.currentPage - 1);
     }
   };
-
-  // goToDetail = (id: number): void => {
-  //   console.log(id);
-  //   this.router.navigate(['/movies/movie', id]);
-  // };
 }
