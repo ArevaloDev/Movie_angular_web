@@ -1,1 +1,58 @@
-<p>favorities-movies works!</p>
+
+<div class="container-fluid px-4">
+  <h2 class="my-4 text-center">Mis Películas Favoritas</h2>
+
+  <div *ngIf="favorites.length > 0; else noFavorites">
+    <div class="row g-4">
+      <div *ngFor="let movie of favorites" class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="card movie-card h-100 shadow-sm">
+          <img
+            [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+            class="card-img-top movie-img"
+            [alt]="movie.title"
+          />
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h6 class="card-title text-center">{{ movie.title }}</h6>
+            <p class="card-text text-center small text-muted">
+              Estreno: {{ movie.release_date }}
+            </p>
+            <button
+              class="btn btn-outline-danger w-100 mt-auto"
+              (click)="removeFavorite(movie.id)"
+            >
+              Quitar de favoritos
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noFavorites>
+    <p class="text-center text-muted mt-5">No tienes películas favoritas aún.</p>
+  </ng-template>
+</div>
+
+
+
+
+
+
+
+
+<!-- <h2>Películas favoritas</h2>
+<div *ngIf="favorites.length > 0; else empty">
+  <div *ngFor="let movie of favorites" class="card mb-3">
+    <img [src]="'https://image.tmdb.org/t/p/w300' + movie.backdrop_path" class="card-img-top">
+    <div class="card-body">
+      <h5 class="card-title">{{ movie.title }}</h5>
+      <button class="btn btn-danger" (click)="removeFavorite(movie.id)">
+        Quitar de favoritos
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #empty>
+  <p>No tienes películas favoritas aún.</p>
+</ng-template> -->

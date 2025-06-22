@@ -20,7 +20,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private movieService: MovieService, private router: Router) {}
 
   ngOnInit(): void {
-    this.isLoading = true;
+      this.getPopularMovies();
+  }
+  ngOnDestroy(): void {
+    this.searchSub.unsubscribe();
+  }
+
+  getPopularMovies = () => {
+      this.isLoading = true;
     this.searchSub = this.movieService.searchjResult$.subscribe((results) => {
       if (results.length > 0) {
         this.popularMovies = results;
@@ -29,9 +36,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.loadMovies(this.currentPage);
       }
     });
-  }
-  ngOnDestroy(): void {
-    this.searchSub.unsubscribe();
   }
 
   loadMovies = (page: number): void => {

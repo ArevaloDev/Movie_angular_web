@@ -1,6 +1,6 @@
 <div
   *ngIf="!isLoading; else movieList"
-  class="container py-4 animate__animated animate__fadeInUp"
+  class="container py-4 out-circle-center "
 >
   <div  class="card mb-3 shadow-lg border-0">
     <div class="row g-0">
@@ -33,7 +33,9 @@
               ⭐{{ movie.vote_average }}
             </span>
             <button class="btn btn-danger">
-              <i class="bi bi-heart-fill me-2"></i> Agregar a Favoritos
+              <i class="bi bi-heart-fill me-2" (click)="isFavorite() ?  removeFromFavorites() : addToFavorites()">
+                {{ isFavorite() ? 'Quitar de favoritos' : 'Agregar a favoritos' }}
+              </i>
             </button>
           </div>
         </div>

@@ -55,4 +55,17 @@ export class MoviedetailsComponent implements OnInit, OnDestroy {
         },
       });
   };
+
+
+  addToFavorites(): void {
+    this.movieService.addFavorties(this.movie);
+  }
+
+  removeFromFavorites(): void {
+    this.movieService.removeFromFavorites(this.movie.id);
+  }
+
+  isFavorite = ():boolean => {
+    return this.movieService.isFavorite(this.movie.id);
+  }
 }
