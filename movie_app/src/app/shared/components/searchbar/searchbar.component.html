@@ -1,8 +1,8 @@
 <nav class="navbar bg-dark border-bottom border-body"  data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand animate__animated animate__bounceInLeft">Movie app</a>
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+    <a class="navbar-brand animate__animated animate__bounceInLeft" [routerLink]="['/home']" routerLinkActive="router-link-active" >Movie app</a>
+    <form [formGroup]="form" (submit)="searchMovie()"  class="d-flex" role="search">
+      <input formControlName="movie" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
   </div>
