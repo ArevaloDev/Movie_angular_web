@@ -1,5 +1,5 @@
 import { HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
-import { environment } from '../../../enviroments/enviroment';
+import { environment } from '../../../enviroments/environment';
 
 export const authInterceptor: HttpInterceptorFn = (req:HttpRequest<unknown>, next:HttpHandlerFn) => {
   const apiKey:string = environment.tmdbApiKey;
