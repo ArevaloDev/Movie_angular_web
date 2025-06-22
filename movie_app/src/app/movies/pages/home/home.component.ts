@@ -17,18 +17,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   private searchSub!: Subscription;
   public errorMessage: string = '';
 
-  constructor(private movieService: MovieService, private router: Router) {}
+  constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
       this.getPopularMovies();
   }
   ngOnDestroy(): void {
-    this.searchSub.unsubscribe();
+    if(this.searchSub){
+      this.searchSub.unsubscribe();
+    }
   }
 
   getPopularMovies = () => {
       this.isLoading = true;
-    this.searchSub = this.movieService.searchjResult$.subscribe((results) => {
+    this.searchSub = this.movieService.searchResult$.subscribe((results) => {
       if (results.length > 0) {
         this.popularMovies = results;
         this.isLoading = false;
@@ -52,7 +54,8 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.totalPages = response.total_pages;
           },
           error: () => {
-                this.errorMessage = 'Ocurrió un error al cargar las películas. Inténtalo de nuevo más tarde.'
+                this.errorMessage = 'Ocurrió un error al cargar las películas. Inténtalo de nuevo más tarde.';
+                this.popularMovies = [];
           },
         }
       );

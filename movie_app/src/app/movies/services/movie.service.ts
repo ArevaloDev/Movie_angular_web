@@ -12,7 +12,7 @@ const FAVORITES_KEY = 'favorites_movies';
 export class MovieService {
   public url: string = environment.tmdbBaseUrl;
   public searchResultSubject = new BehaviorSubject<Movies[]>([]);
-  public searchjResult$ = this.searchResultSubject.asObservable();
+  public searchResult$ = this.searchResultSubject.asObservable();
   public favoritesSubject = new BehaviorSubject<Movie[]>(this.loadFavorites());
   public favoritesSubject$ = this.favoritesSubject.asObservable();
   constructor(private http: HttpClient) {}
