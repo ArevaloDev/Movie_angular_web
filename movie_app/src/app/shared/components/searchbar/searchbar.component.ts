@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MovieService } from '../../../movies/services/movie.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-searchbar',
@@ -12,7 +13,8 @@ export class SearchbarComponent implements OnInit {
   public form!:FormGroup;
   constructor(
     private fb:FormBuilder,
-    private movieService:MovieService
+    private movieService:MovieService,
+    private router:Router
   ){
      this.form  = this.fb.group({
         movie: ['']
@@ -26,5 +28,10 @@ export class SearchbarComponent implements OnInit {
     if(value.length === 0) return;
     this.movieService.searchMovies(value);
 
+  }
+
+  goToHome = () => {
+    this.router.navigate(['/home']);
+    this.movieService.clearSearch();
   }
 }

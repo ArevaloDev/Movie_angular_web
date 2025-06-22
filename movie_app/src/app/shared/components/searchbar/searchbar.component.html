@@ -1,6 +1,11 @@
 <nav class="navbar bg-dark border-bottom border-body"  data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand animate__animated animate__bounceInLeft" [routerLink]="['/home']" routerLinkActive="router-link-active" >Movie app</a>
+    <a class="navbar-brand animate__animated animate__bounceInLeft" (click)="goToHome()" routerLinkActive="router-link-active" >Movie app</a>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" routerLink="/movies/favoritos">⭐ Favoritos</a>
+      </li>
+    </ul>
     <form [formGroup]="form" (submit)="searchMovie()"  class="d-flex" role="search">
       <input formControlName="movie" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
       <button class="btn btn-outline-success" type="submit">Search</button>
