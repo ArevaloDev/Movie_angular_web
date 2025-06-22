@@ -1,5 +1,5 @@
 
-<div *ngIf="popularMovies.length; else loading" class="container mt-4 animate__animated animate__fadeInUp">
+<div *ngIf="!isLoading; else movieList" class="container mt-4 animate__animated animate__fadeInUp">
   <div class="row g-4">
     <div
       *ngFor="let movie of popularMovies"
@@ -38,10 +38,13 @@
   </nav>
 </div>
 
-<ng-template #loading>
+<ng-template #movieList>
  <div class="text-center my-5">
   <div class="spinner-border text-primary" role="status">
     <span class="visually-hidden">Cargando...</span>
   </div>
 </div>
 </ng-template>
+
+
+<app-error-message [errorMessage]="errorMessage"></app-error-message>
