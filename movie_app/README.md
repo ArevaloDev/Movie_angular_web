@@ -1,27 +1,31 @@
 # MovieApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+Aplicación web desarrollada con Angular que consume la API de The Movie Database (TMDb) para mostrar películas populares, buscarlas por nombre, ver sus detalles y agregar películas favoritas.
 
-## Development server
+## 🔗 URL del proyecto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+https://idyllic-twilight-28c593.netlify.app/movies
 
-## Code scaffolding
+## Descripción del proyecto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+-Búsqueda de películas por título
+-Listado de películas populares
+-Vista de detalle de una película
+-Agregar y quitar películas favoritas (guardadas en localStorage)
+-Navegación con rutas y carga de datos vía HTTP
+-Buen manejo de errores y animaciones con Bootstrap y Animate.css
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Instalación
 
-## Running unit tests
+Asegúrate de tener [Node.js](https://nodejs.org/) y Angular CLI instalado globalmente:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+npm install -g @angular/cli
 
-## Running end-to-end tests
+## Instala las dependecias
+npm install
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Ejecutar proyecto
+ng serve
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
